@@ -2,14 +2,16 @@
 
 one:
   happened_on: 2012-01-03
-  num_units: 1
-  num_individuals: 1
-  email: MyString
-  district_id: 1
+  num_units: 10
+  num_individuals: 137
+  email: admin@example.com
+  district: one
+  program: two
 
 two:
   happened_on: 2012-01-03
-  num_units: 1
-  num_individuals: 1
-  email: MyString
-  district_id: 1
+  num_units: 5
+  num_individuals: 30
+  email: test@example.com
+  district: one
+  program: two
