@@ -1,0 +1,37 @@
+<%= form_for(@roundtable) do |f| %>
+  <% if @roundtable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@roundtable.errors.count, "error") %> prohibited this roundtable from being saved:</h2>
+
+      <ul>
+      <% @roundtable.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :happened_on %><br />
+    <%= f.date_select :happened_on %>
+  </div>
+  <div class="field">
+    <%= f.label :num_units %><br />
+    <%= f.number_field :num_units %>
+  </div>
+  <div class="field">
+    <%= f.label :num_individuals %><br />
+    <%= f.number_field :num_individuals %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :district_id %><br />
+    <%= f.select :district_id, options_from_collection_for_select(District.all, "id", "name") %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

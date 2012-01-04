@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Happened on</th>
+    <th>Num units</th>
+    <th>Num individuals</th>
+    <th>Email</th>
+    <th>District</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @roundtables.each do |roundtable| %>
+  <tr>
+    <td><%= roundtable.happened_on %></td>
+    <td><%= roundtable.num_units %></td>
+    <td><%= roundtable.num_individuals %></td>
+    <td><%= roundtable.email %></td>
+    <td><%= roundtable.district.name %></td>
+    <td><%= link_to 'Show', roundtable %></td>
+    <td><%= link_to 'Edit', edit_roundtable_path(roundtable) %></td>
+    <td><%= link_to 'Destroy', roundtable, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
