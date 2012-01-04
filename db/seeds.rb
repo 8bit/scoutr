@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-File.open('/Users/crjones/Documents/Code/roundtable_report/db/districts.txt').each_line { |name|
+File.open('db/districts.txt').each_line { |name|
   District.create(:name => name)
 }
