@@ -9,3 +9,5 @@
 File.open('db/districts.txt').each_line { |name|
   District.create(:name => name)
 }
+
+Program.create([{ name: 'Boy Scouts'}, { name: 'Cub Scouts'}, { name: 'Venturing'}, { name: 'Varsity'}])

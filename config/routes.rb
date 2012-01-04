@@ -1,4 +1,6 @@
 RoundtableReport::Application.routes.draw do
+  resources :programs
+
   resources :roundtables
 
   resources :districts
