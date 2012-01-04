@@ -8,6 +8,7 @@ gem 'rake', '0.8.7'
 
 gem 'sqlite3'
 gem 'pg', :group => :production
+gem 'therubyracer', :group => :production
 
 # Gems used only for assets and not required
 # in production environments by default.
