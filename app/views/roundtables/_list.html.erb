@@ -1,5 +1,6 @@
 <table>
   <tr>
+    <th>Program</th>
     <th>Happened on</th>
     <th>Num units</th>
     <th>Num individuals</th>
@@ -12,6 +13,7 @@
 
 <% @roundtables.each do |roundtable| %>
   <tr>
+    <td><%= roundtable.program.name %></td>
     <td><%= roundtable.happened_on %></td>
     <td><%= roundtable.num_units %></td>
     <td><%= roundtable.num_individuals %></td>

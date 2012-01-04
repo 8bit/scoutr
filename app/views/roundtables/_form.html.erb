@@ -31,6 +31,10 @@
     <%= f.label :district_id %><br />
     <%= f.select :district_id, options_from_collection_for_select(District.all, "id", "name") %>
   </div>
+  <div class="field">
+    <%= f.label :program_id %><br />
+    <%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name") %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
