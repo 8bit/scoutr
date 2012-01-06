@@ -1,7 +1,6 @@
-<h1>Listing roundtables</h1>
+<h1>Listing roundtables for <%= @district.name %></h1>
 
 <%= render 'list' %>
 
 <br />
-
-<%= link_to 'New Roundtable', new_roundtable_path %>
+<%= render 'form' %>

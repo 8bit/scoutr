@@ -15,6 +15,12 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  Council:<br />
+  <%= @district.council.name %><br /><br />
+  <div class="field">
+    <%= f.label :division_id %><br />
+    <%= f.select :division_id, options_from_collection_for_select(Division.where(:council_id => @district.council), "id", "name", @district.division_id) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

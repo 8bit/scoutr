@@ -1,27 +1,47 @@
-<table>
+<table border="1" cellpadding="5" cellspacing="0">
   <tr>
+    <th>Date</th>
     <th>Program</th>
-    <th>Happened on</th>
-    <th>Num units</th>
-    <th>Num individuals</th>
+    <th>Units</th>
+    <th>Individuals</th>
     <th>Email</th>
-    <th>District</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th colspan="3"></th>
   </tr>
 
+<% previous_date = nil %>
+
 <% @roundtables.each do |roundtable| %>
+<% unless roundtable.happened_on == previous_date || previous_date == nil %>
+<tr>
+  <td>Total</td>
+  <td><%= @roundtables.sum(:num_units, :conditions => ['happened_on = ?', previous_date]) %></td>
+  <td><%= @roundtables.sum(:num_individuals, :conditions => ['happened_on = ?', previous_date]) %></td>
+  <td colspan="4"></td>
+</tr>
+<% end %>
+
   <tr>
+    <% unless roundtable.happened_on == previous_date %>
+      <td rowspan="<%= @roundtables.select { |r| r.happened_on == roundtable.happened_on }.size + 1 %>"><%= roundtable.happened_on %></td>
+    <% end %>
     <td><%= roundtable.program.name %></td>
-    <td><%= roundtable.happened_on %></td>
     <td><%= roundtable.num_units %></td>
     <td><%= roundtable.num_individuals %></td>
     <td><%= roundtable.email %></td>
-    <td><%= roundtable.district.name %></td>
     <td><%= link_to 'Show', roundtable %></td>
     <td><%= link_to 'Edit', edit_roundtable_path(roundtable) %></td>
     <td><%= link_to 'Destroy', roundtable, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
+  <% previous_date = roundtable.happened_on %>
+  <% if roundtable == @roundtables.last %>
+  <tr>
+    <td>Total</td>
+    <td><%= @roundtables.sum(:num_units, :conditions => ['happened_on = ?', previous_date]) %></td>
+    <td><%= @roundtables.sum(:num_individuals, :conditions => ['happened_on = ?', previous_date]) %></td>
+    <td colspan="4"></td>
+  </tr>
+  <% end %>
+
 <% end %>
 </table>
+<br />

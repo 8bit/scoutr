@@ -2,8 +2,10 @@ class RoundtablesController < ApplicationController
   # GET /roundtables
   # GET /roundtables.json
   def index
-    @roundtables = Roundtable.all
-
+    @district = District.find(params[:district_id])
+    @roundtables = Roundtable.where(:district_id => @district)
+    
+    @roundtable = Roundtable.new(:district => @district)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @roundtables }
@@ -14,7 +16,6 @@ class RoundtablesController < ApplicationController
   # GET /roundtables/1.json
   def show
     @roundtable = Roundtable.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @roundtable }
@@ -24,8 +25,9 @@ class RoundtablesController < ApplicationController
   # GET /roundtables/new
   # GET /roundtables/new.json
   def new
+    @district = District.find(params[:district_id])
     @roundtable = Roundtable.new
-
+    @roundtable.district = @district  if params[:district_id].present?
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @roundtable }
@@ -44,7 +46,7 @@ class RoundtablesController < ApplicationController
 
     respond_to do |format|
       if @roundtable.save
-        format.html { redirect_to @roundtable, notice: 'Roundtable was successfully created.' }
+        format.html { redirect_to district_roundtables_path(@roundtable.district), notice: 'Roundtable was successfully created.' }
         format.json { render json: @roundtable, status: :created, location: @roundtable }
       else
         format.html { render action: "new" }

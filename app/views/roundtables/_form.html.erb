@@ -10,32 +10,13 @@
       </ul>
     </div>
   <% end %>
+  <%= f.hidden_field :district_id, :value =>  @roundtable.district_id %>
 
   <div class="field">
-    <%= f.label :happened_on %><br />
     <%= f.date_select :happened_on %>
-  </div>
-  <div class="field">
-    <%= f.label :num_units %><br />
-    <%= f.number_field :num_units %>
-  </div>
-  <div class="field">
-    <%= f.label :num_individuals %><br />
-    <%= f.number_field :num_individuals %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :district_id %><br />
-    <%= f.select :district_id, options_from_collection_for_select(District.all, "id", "name") %>
-  </div>
-  <div class="field">
-    <%= f.label :program_id %><br />
-    <%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name") %>
-  </div>
-  <div class="actions">
+    <%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name", @roundtable.program_id) %>
+    Units: <%= f.number_field :num_units, :size => 4 %>
+    Individuals: <%= f.number_field :num_individuals, :size => 4 %>
+    Email: <%= f.text_field :email %>
     <%= f.submit %>
-  </div>
 <% end %>
