@@ -11,9 +11,9 @@
 <% @districts.each do |district| %>
   <tr>
     <td><%= district.name %></td>
-    <td><%= link_to 'Show', district %></td>
-    <td><%= link_to 'Edit', edit_district_path(district) %></td>
-    <td><%= link_to 'Destroy', district, confirm: 'Are you sure?', method: :delete %></td>
+    <td class="span1"><%= link_to 'Show', district, :class => 'btn primary' %></td>
+    <td class="span1"><%= link_to 'Edit', edit_district_path(district), :class => 'btn' %></td>
+    <td class="span1"><%= link_to 'Delete', district, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %></td>
   </tr>
 <% end %>
 </table>

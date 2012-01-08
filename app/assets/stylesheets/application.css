@@ -7,4 +7,9 @@
 */
 body {
 	background-color: #cccc99;
+	padding-top: 40px;
+}
+
+.content-wrapper {
+	padding-top: 50px;
 }

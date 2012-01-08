@@ -13,9 +13,9 @@
   <tr>
     <td><%= division.name %></td>
     <td><%= division.council.name %></td>
-    <td><%= link_to 'Show', division %></td>
-    <td><%= link_to 'Edit', edit_division_path(division) %></td>
-    <td><%= link_to 'Destroy', division, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', division, :class => 'btn primary' %></td>
+    <td><%= link_to 'Edit', edit_division_path(division), :class => 'btn' %></td>
+    <td><%= link_to 'Destroy', division, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %></td>
   </tr>
 <% end %>
 </table>

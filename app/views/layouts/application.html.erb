@@ -4,11 +4,52 @@
   <title>RoundtableReport</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+	<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="topbar" data-dropdown="dropdown">
+	      <div class="topbar-inner">
+	        <div class="container">
+	          <h3><a href="#">Roundtable Reporting</a></h3>
+	          <ul class="nav">
+	            <li class="dropdown">
+	              <a href="#" class="dropdown-toggle">Councils</a>
+	              <ul class="dropdown-menu">
+	                <% Council.all.each do |c|%>
+										<li><%= link_to truncate(c.name, :length => 20), c %></li>
+									<% end %>
+	                <li class="divider"></li>
+	                <li><a href="/councils">List All</a></li>
+	              </ul>
+	            </li>
+	            <li><a href="/divisions">Divisions</a></li>
+	            <li><a href="/districts">Districts</a></li>
+	          </ul>
+	          <ul class="nav secondary-nav">
+	            <li class="dropdown">
+	              <a href="#" class="dropdown-toggle">Christopher Jones</a>
+	              <ul class="dropdown-menu">
+	                <li><a href="#">Profile</a></li>
+	                <li><a href="#">Recent Activity</a></li>
+	                <li class="divider"></li>
+	                <li><a href="#">Logout</a></li>
+	              </ul>
+	            </li>
+	          </ul>
+	        </div>
+	      </div><!-- /topbar-inner -->
+	    </div>
 
-<%= yield %>
+<div class="container">
+	<div class="content-wrapper">
+		<div class="alert-message warning">
+		  <a class="close" href="#">×</a>
+		  <p><strong>Warning!</strong> Authentication is not yet working. Top right menu is just a placeholder.</p>
+		</div>
+		<%= yield %>
+	</div>
+</div>
 
 </body>
 </html>

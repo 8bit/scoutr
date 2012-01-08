@@ -13,9 +13,9 @@
   <tr>
     <td><%= council.name %></td>
     <td><%= council.number %></td>
-    <td><%= link_to 'Show', council %></td>
-    <td><%= link_to 'Edit', edit_council_path(council) %></td>
-    <td><%= link_to 'Destroy', council, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', council, :class => 'btn primary' %></td>
+    <td><%= link_to 'Edit', edit_council_path(council), :class => 'btn' %></td>
+    <td><%= link_to 'Destroy', council, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %></td>
   </tr>
 <% end %>
 </table>

@@ -1,6 +1,73 @@
 <h1>Listing roundtables for <%= @district.name %></h1>
 
-<%= render 'list' %>
+<%= form_for(@roundtable) do |f| %>
+  <% if @roundtable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@roundtable.errors.count, "error") %> prohibited this roundtable from being saved:</h2>
 
-<br />
-<%= render 'form' %>
+      <ul>
+      <% @roundtable.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :district_id, :value =>  @roundtable.district_id %>
+
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Date</th>
+    <th>Program</th>
+    <th>Units</th>
+    <th>Individuals</th>
+    <th>Email</th>
+    <th colspan="2"></th>
+  </tr>
+
+<% previous_date = nil %>
+
+<% @roundtables.each do |roundtable| %>
+<% unless roundtable.happened_on == previous_date || previous_date == nil %>
+<tr>
+  <td>Total</td>
+  <td><%= @roundtables.sum(:num_units, :conditions => ['happened_on = ?', previous_date]) %></td>
+  <td><%= @roundtables.sum(:num_individuals, :conditions => ['happened_on = ?', previous_date]) %></td>
+  <td colspan="3"></td>
+</tr>
+<% end %>
+
+  <tr>
+    <% unless roundtable.happened_on == previous_date %>
+      <td rowspan="<%= @roundtables.select { |r| r.happened_on == roundtable.happened_on }.size + 1 %>"><%= roundtable.happened_on %></td>
+    <% end %>
+    <td><%= roundtable.program.name %></td>
+    <td><%= roundtable.num_units %></td>
+    <td><%= roundtable.num_individuals %></td>
+    <td><%= roundtable.email %></td>
+    <td><%= link_to 'Edit', edit_roundtable_path(roundtable), :class => 'btn primary' %></td>
+    <td><%= link_to 'Delete', roundtable, confirm: 'Are you sure?', method: :delete, :class => ' btn danger' %></td>
+  </tr>
+  <% previous_date = roundtable.happened_on %>
+  <% if roundtable == @roundtables.last %>
+  <tr>
+    <td>Total</td>
+    <td><%= @roundtables.sum(:num_units, :conditions => ['happened_on = ?', previous_date]) %></td>
+    <td><%= @roundtables.sum(:num_individuals, :conditions => ['happened_on = ?', previous_date]) %></td>
+    <td colspan="3"></td>
+  </tr>
+  <% end %>
+
+<% end %>
+
+<tr>
+	<td><%= f.text_field :happened_on, :class => "span3" %></td>
+  <td><%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name", @roundtable.program_id), :class => "span2" %></td>
+  <td><%= f.number_field :num_units, :class => "span2" %></td>
+  <td><%= f.number_field :num_individuals, :class => "span2" %></td>
+	<td><%= f.text_field :email %></td>
+  <td colspan="2"><%= f.submit 'Add Roundtable', :class => 'btn' %></td>
+</tr>
+
+</table>
+
+<% end %>
