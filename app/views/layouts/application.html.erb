@@ -47,6 +47,12 @@
 		  <a class="close" href="#">×</a>
 		  <p><strong>Warning!</strong> Authentication is not yet working. Top right menu is just a placeholder.</p>
 		</div>
+		<% flash.each do |key, msg| %>
+		    <%= content_tag :div, msg, :class => [key, " alert-message"], :id => "notice_ #{key}" %>
+		    <%= content_tag :script, :type => "text/javascript" do -%>
+		        setTimeout("new Effect.Fade('notice_<%= key %>');", 15000);
+		    <% end %>
+		<% end %>
 		<%= yield %>
 	</div>
 </div>
