@@ -46,7 +46,7 @@ class RoundtablesController < ApplicationController
 
     respond_to do |format|
       if @roundtable.save
-        format.html { redirect_to district_roundtables_path(@roundtable.district), notice: 'Roundtable was successfully created.' }
+        format.html { redirect_to district_roundtables_path(@roundtable.district), :flash => { success: 'Roundtable was successfully created.'} }
         format.json { render json: @roundtable, status: :created, location: @roundtable }
       else
         format.html { render action: "new" }
