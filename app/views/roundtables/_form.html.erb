@@ -10,13 +10,28 @@
       </ul>
     </div>
   <% end %>
-  <%= f.hidden_field :district_id, :value =>  @roundtable.district_id %>
-
-  <div class="field">
-    <%= f.date_select :happened_on %>
-    <%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name", @roundtable.program_id) %>
-    Units: <%= f.number_field :num_units, :size => 4 %>
-    Individuals: <%= f.number_field :num_individuals, :size => 4 %>
-    Email: <%= f.text_field :email %>
-    <%= f.submit %>
+	
+	<table>
+		<tr>
+			<td>Date of Roundtable</td><td><%= f.date_select :happened_on %></td>
+		</tr>
+		<tr>
+			<td>District</td><td><%= f.select :district_id, options_from_collection_for_select(District.all, "id", "name", @roundtable.district_id) %></td>
+		</tr>
+		<tr>
+			<td>Program</td><td><%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name", @roundtable.program_id) %></td>
+		</tr>
+		<tr>
+			<td>Units</td><td><%= f.number_field :num_units, :size => 4 %></td>
+		</tr>
+		<tr>
+			<td>Individuals</td><td><%= f.number_field :num_individuals, :size => 4 %></td>
+		</tr>
+		<tr>
+			<td>Email</td><td><%= f.text_field :email %></td>
+		</tr>
+		<tr>
+			<td></td><td><%= f.submit 'Record Roundtable', :class => 'btn' %></td>
+		</tr>  
+	</table>
 <% end %>

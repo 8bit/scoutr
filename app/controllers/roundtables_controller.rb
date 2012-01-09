@@ -25,9 +25,9 @@ class RoundtablesController < ApplicationController
   # GET /roundtables/new
   # GET /roundtables/new.json
   def new
-    @district = District.find(params[:district_id])
+    @district = District.find(params[:district_id]) if params[:district_id].present?
     @roundtable = Roundtable.new
-    @roundtable.district = @district  if params[:district_id].present?
+    @roundtable.district = @district if params[:district_id].present?
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @roundtable }
