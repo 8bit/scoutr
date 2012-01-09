@@ -9,7 +9,7 @@ class Roundtable < ActiveRecord::Base
   
   def happened_on=(arg)
     if arg.is_a?(String)
-      self[:happended_on] = Date.strptime(arg, "%m/%d/%Y")
+      self[:happened_on] = Date.strptime(arg, "%m-%d-%Y")
     else #just push it through
       self[:happened_on] = arg
     end
