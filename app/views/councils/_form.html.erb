@@ -11,15 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="clearfix">
+    <%= f.label :name %> <div class="input"><%= f.text_field :name %></div>
   </div>
-  <div class="field">
-    <%= f.label :number %><br />
-    <%= f.number_field :number %>
+  <div class="clearfix">
+    <%= f.label :number %> <div class="input"><%= f.number_field :number, :class => 'span2' %></div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save Council', :class => 'btn' %> or <%= link_to 'cancel', :back %>
   </div>
 <% end %>

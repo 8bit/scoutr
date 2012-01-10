@@ -44,7 +44,7 @@ class ProgramsController < ApplicationController
 
     respond_to do |format|
       if @program.save
-        format.html { redirect_to @program, notice: 'Program was successfully created.' }
+        format.html { redirect_to @program, :flash => { success: 'Program was successfully created.'} }
         format.json { render json: @program, status: :created, location: @program }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class ProgramsController < ApplicationController
 
     respond_to do |format|
       if @program.update_attributes(params[:program])
-        format.html { redirect_to @program, notice: 'Program was successfully updated.' }
+        format.html { redirect_to @program, :flash => { success: 'Program was successfully updated.'} }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

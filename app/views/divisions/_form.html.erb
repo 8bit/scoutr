@@ -11,15 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="clearfix">
+    <%= f.label :name %><div class="input"><%= f.text_field :name %></div>
   </div>
-  <div class="field">
-    <%= f.label :council_id %><br />
-    <%= f.select :council_id, options_from_collection_for_select(Council.all, "id", "name", @division.council_id) %>
+  <div class="clearfix">
+    <%= f.label :council_id %><div class="input"><%= f.select :council_id, options_from_collection_for_select(Council.all, "id", "name", @division.council_id) %></div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Division", :class => 'btn' %> or <%= link_to 'cancel', :back %>
   </div>
 <% end %>

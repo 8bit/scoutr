@@ -1,3 +1,9 @@
+<ul class="breadcrumb">
+  <li><%= link_to @district.council.name, @district.council %> <span class="divider">/</span></li>
+  <li><%= link_to @district.division.name, @district.division %> <span class="divider">/</span></li>
+  <li class="active"><%= @district.name %></li>
+</ul>
+
 <h1>Listing roundtables for <%= @district.name %></h1>
 
 <%= form_for(@roundtable) do |f| %>

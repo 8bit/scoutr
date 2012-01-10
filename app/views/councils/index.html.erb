@@ -2,8 +2,8 @@
 
 <table>
   <tr>
-    <th>Name</th>
     <th>Number</th>
+    <th>Name</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,15 +11,15 @@
 
 <% @councils.each do |council| %>
   <tr>
-    <td><%= council.name %></td>
     <td><%= council.number %></td>
-    <td><%= link_to 'Show', council, :class => 'btn primary' %></td>
-    <td><%= link_to 'Edit', edit_council_path(council), :class => 'btn' %></td>
-    <td><%= link_to 'Destroy', council, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %></td>
+    <td><%= council.name %></td>
+    <td class="span2"><%= link_to 'Show', council, :class => 'btn' %></td>
+    <td class="span2"><%= link_to 'Edit', edit_council_path(council), :class => 'btn' %></td>
+    <td class="span2"><%= link_to 'Destroy', council, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Council', new_council_path %>
+<%= link_to 'New Council', new_council_path, :class => 'btn primary large' %>

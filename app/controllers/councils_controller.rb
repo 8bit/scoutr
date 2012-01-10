@@ -44,7 +44,7 @@ class CouncilsController < ApplicationController
 
     respond_to do |format|
       if @council.save
-        format.html { redirect_to @council, notice: 'Council was successfully created.' }
+        format.html { redirect_to @council, :flash => { success: 'Council was successfully created.'} }
         format.json { render json: @council, status: :created, location: @council }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class CouncilsController < ApplicationController
 
     respond_to do |format|
       if @council.update_attributes(params[:council])
-        format.html { redirect_to @council, notice: 'Council was successfully updated.' }
+        format.html { redirect_to @council, :flash => { success: 'Council was successfully updated.'} }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
