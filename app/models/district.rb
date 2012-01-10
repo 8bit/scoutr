@@ -3,6 +3,8 @@ class District < ActiveRecord::Base
   has_one :council, :through => :division
   
   has_many :roundtables
+
+  validates_presence_of :name
   
   def parent
     self.division

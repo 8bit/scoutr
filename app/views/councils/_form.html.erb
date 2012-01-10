@@ -1,7 +1,7 @@
-<%= form_for(@council) do |f| %>
+<%= form_for(@council, :builder => BootstrapFormBuilder) do |f| %>
   <% if @council.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@council.errors.count, "error") %> prohibited this council from being saved:</h2>
+    <div class="alert-message block-message error">
+      <p><strong><%= pluralize(@council.errors.count, "error") %> prohibited this council from being saved:</strong></p>
 
       <ul>
       <% @council.errors.full_messages.each do |msg| %>
@@ -11,12 +11,10 @@
     </div>
   <% end %>
 
-  <div class="clearfix">
-    <%= f.label :name %> <div class="input"><%= f.text_field :name %></div>
-  </div>
-  <div class="clearfix">
-    <%= f.label :number %> <div class="input"><%= f.number_field :number, :class => 'span2' %></div>
-  </div>
+  
+  <%= f.text_field :name %>
+  <%= f.text_field :number, :class => 'span1' %>
+  
   <div class="actions">
     <%= f.submit 'Save Council', :class => 'btn' %> or <%= link_to 'cancel', :back %>
   </div>
