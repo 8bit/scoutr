@@ -7,6 +7,10 @@ class Roundtable < ActiveRecord::Base
   
   default_scope :order => 'happened_on DESC'
   
+  def parent
+    self.district
+  end
+  
   def happened_on=(arg)
     if arg.is_a?(String)
       self[:happened_on] = Date.strptime(arg, "%m-%d-%Y")

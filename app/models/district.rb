@@ -3,4 +3,9 @@ class District < ActiveRecord::Base
   has_one :council, :through => :division
   
   has_many :roundtables
+  
+  def parent
+    self.division
+  end
+  
 end
