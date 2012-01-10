@@ -7,16 +7,14 @@ RoundtableReport::Application.routes.draw do
   resources :councils do
     resources :divisions
   end
-  
-  resources :districts do
-    resources :roundtables
-  end
 
-
-  constraints(Subdomain) do
-    match '/' => 'districts#show'
+  constraints :subdomain => "commissioner" do
+    root :to => 'roundtables#new'
+    
+    resources :districts do
+      resources :roundtables
+    end
+    
   end
-  
-  root :to => 'roundtables#new'
 
 end
