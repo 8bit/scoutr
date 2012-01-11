@@ -1,0 +1,28 @@
+<%= form_for(@lodge) do |f| %>
+  <% if @lodge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lodge.errors.count, "error") %> prohibited this lodge from being saved:</h2>
+
+      <ul>
+      <% @lodge.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :number %><br />
+    <%= f.number_field :number %>
+  </div>
+  <div class="clearfix">
+    <%= f.label :council_id %><div class="input"><%= f.select :council_id, options_from_collection_for_select(Council.all, "id", "name", @lodge.council_id) %></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

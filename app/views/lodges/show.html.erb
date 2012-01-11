@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @lodge.name %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @lodge.number %>
+</p>
+
+<p>
+  <b>Council:</b>
+  <%= @lodge.council.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_lodge_path(@lodge) %> |
+<%= link_to 'Back', lodges_path %>

@@ -1,0 +1,27 @@
+<h1>Listing lodges</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Number</th>
+    <th>Council</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lodges.each do |lodge| %>
+  <tr>
+    <td><%= lodge.name %></td>
+    <td><%= lodge.number %></td>
+    <td><%= lodge.council.name %></td>
+    <td><%= link_to 'Show', lodge %></td>
+    <td><%= link_to 'Edit', edit_lodge_path(lodge) %></td>
+    <td><%= link_to 'Destroy', lodge, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lodge', new_lodge_path %>

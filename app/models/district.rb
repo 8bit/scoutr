@@ -3,7 +3,7 @@ class District < ActiveRecord::Base
   has_one :council, :through => :division
   
   has_many :roundtables
-
+  has_one :chapter
   validates_presence_of :name
   
   def parent

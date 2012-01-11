@@ -1,9 +1,16 @@
 RoundtableReport::Application.routes.draw do
   
+  constraints :subdomain => "oa" do
+    resources :chapters
+    resources :lodges
+    
+    root :to => 'lodges#index'
+  end
   resources :programs
   resources :roundtables
   resources :divisions
-    
+  resources :districts 
+  
   resources :councils do
     resources :divisions
   end
@@ -16,5 +23,6 @@ RoundtableReport::Application.routes.draw do
     end
     
   end
-
+  
+  root :to => 'councils#index'
 end

@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120106220447) do
+ActiveRecord::Schema.define(:version => 20120110235826) do
+
+  create_table "chapters", :force => true do |t|
+    t.string   "name"
+    t.integer  "lodge_id"
+    t.integer  "district_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "councils", :force => true do |t|
     t.string   "name"
@@ -29,6 +37,14 @@ ActiveRecord::Schema.define(:version => 20120106220447) do
 
   create_table "divisions", :force => true do |t|
     t.string   "name"
+    t.integer  "council_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lodges", :force => true do |t|
+    t.string   "name"
+    t.integer  "number"
     t.integer  "council_id"
     t.datetime "created_at"
     t.datetime "updated_at"
