@@ -11,18 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :number %><br />
-    <%= f.number_field :number %>
-  </div>
+  <%= f.text_field :name %>
+  <%= f.text_field :number %>
   <div class="clearfix">
     <%= f.label :council_id %><div class="input"><%= f.select :council_id, options_from_collection_for_select(Council.all, "id", "name", @lodge.council_id) %></div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save Lodge', :class => 'btn primary large' %>
   </div>
 <% end %>
