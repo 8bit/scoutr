@@ -6,8 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-File.open('db/districts.txt').each_line { |name|
-  District.create(:name => name)
+Program.create([{ name: 'Boy Scouts', unit_type: 'Troop'}, { name: 'Cub Scouts', unit_type: 'Pack'}, { name: 'Venturing', unit_type: 'Crew'}, { name: 'Varsity', unit_type: 'Team'}])
+
+Council.create(:name => 'Sam Houston Area Council', :number => 576)
+
+File.open('db/divisions.txt').each_line { |name|
+  Division.create(:name => name, :council => Council.first)
 }
 
-Program.create([{ name: 'Boy Scouts'}, { name: 'Cub Scouts'}, { name: 'Venturing'}, { name: 'Varsity'}])
+File.open('db/districts.txt').each_line { |name|
+  District.create(:name => name, :division => Division.first)
+}
+
+Lodge.create(:name => 'Colonneh', :number => 137, :council => Council.first)
+
+District.all.each { |d|
+  d.chapter = Chapter.new(:name => d.name, :lodge => d.council.lodge)
+}
