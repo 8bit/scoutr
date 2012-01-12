@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def subdomain_name
+    unless name = { 'oa' => 'OA', 'commissioner' => "Commissioner"}[request.subdomain]
+      name = 'None'
+    end
+    name
+  end
   
   def render_popup(before,id ,button ,header, body)
   render :partial => 'shared/popover', 

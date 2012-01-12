@@ -1,9 +1,9 @@
 RoundtableReport::Application.routes.draw do
+
+  # Persistent routes
   resources :programs
-  resources :roundtables
   resources :divisions
   resources :districts 
-  
   resources :councils do
     resources :divisions
   end
@@ -17,13 +17,15 @@ RoundtableReport::Application.routes.draw do
     
     root :to => 'lodges#index'
   end
+
+  # Routes for Commissioner
   constraints :subdomain => "commissioner" do
     root :to => 'roundtables#new'
     
+    resources :roundtables
     resources :districts do
       resources :roundtables
     end
-    
   end
   
   root :to => 'councils#index'
