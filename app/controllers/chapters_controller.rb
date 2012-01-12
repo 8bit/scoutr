@@ -2,8 +2,16 @@ class ChaptersController < ApplicationController
   # GET /chapters
   # GET /chapters.json
   def index
-    @chapters = Chapter.all
-
+    @lodge = Lodge.find(params[:lodge_id]) if params[:lodge_id]
+    
+    if @lodge.present?
+      @chapters = Chapter.where(:lodge_id => @lodge)
+      @chapter = Chapter.new(:lodge => @lodge) 
+    else
+      @chapters = Chapter.all
+      @chapter = Chapter.new
+    end
+          
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @chapters }
