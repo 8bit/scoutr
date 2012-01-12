@@ -7,6 +7,8 @@ RoundtableReport::Application.routes.draw do
   resources :councils do
     resources :divisions
   end
+  resources :units
+  resources :organizations
 
   # Routes for OA
   constraints :subdomain => "oa" do
