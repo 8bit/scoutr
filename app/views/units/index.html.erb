@@ -14,18 +14,18 @@
 
 <% @units.each do |unit| %>
   <tr>
-    <td><%= unit.number %></td>
-    <td><%= unit.program_id %></td>
-    <td><%= unit.organization_id %></td>
-    <td><%= unit.district_id %></td>
-    <td><%= unit.meeting_address %></td>
-    <td><%= link_to 'Show', unit %></td>
-    <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-    <td><%= link_to 'Destroy', unit, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= unit.name %></td>
+    <td><%= unit.program.name %></td>
+    <td><%= unit.charter.name %></td>
+    <td><%= unit.district.name %></td>
+    <td><%= simple_format(unit.meeting_address) %></td>
+    <td><%= link_to 'Show', unit, :class => 'btn' %></td>
+    <td><%= link_to 'Edit', edit_unit_path(unit), :class => 'btn' %></td>
+    <td><%= link_to 'Destroy', unit, confirm: 'Are you sure?', method: :delete, :class => 'btn danger' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Unit', new_unit_path %>
+<%= link_to 'New Unit', new_unit_path, :class => 'btn primary large' %>

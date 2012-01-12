@@ -2,27 +2,27 @@
 
 <p>
   <b>Number:</b>
-  <%= @unit.number %>
+  <%= @unit.name %>
 </p>
 
 <p>
   <b>Program:</b>
-  <%= @unit.program_id %>
+  <%= @unit.program.name %>
 </p>
 
 <p>
   <b>Organization:</b>
-  <%= @unit.organization_id %>
+  <%= @unit.charter.name %>
 </p>
 
 <p>
   <b>District:</b>
-  <%= @unit.district_id %>
+  <%= @unit.district.name %>
 </p>
 
 <p>
   <b>Meeting address:</b>
-  <%= @unit.meeting_address %>
+  <%= simple_format(@unit.meeting_address) %>
 </p>
 
 
