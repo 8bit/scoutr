@@ -1,4 +1,5 @@
-<%= form_for(@chapter) do |f| %>
+<% modal_flag ||= false %>
+<%= form_for(@chapter,:builder => BootstrapFormBuilder) do |f| %>
   <% if @chapter.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@chapter.errors.count, "error") %> prohibited this chapter from being saved:</h2>
@@ -11,10 +12,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+  <%= f.text_field :name %>
+  
   <div class="clearfix">
     <%= f.label :lodge_id %><div class="input"><%= f.select :lodge_id, options_from_collection_for_select(Lodge.all, "id", "name", @chapter.lodge_id) %></div>
   </div>
@@ -23,7 +22,13 @@
     <%= f.label :district_id %><div class="input"><%= f.select :district_id, options_from_collection_for_select(@chapter.lodge.council.districts.all, "id", "name", @chapter.district_id) %></div>
   </div>
   <% end %>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <% if modal_flag %>
+    </div>
+  <% end %>
+  <div class="<%= (modal_flag) ? 'modal-footer' : 'actions' %>">
+    <%= f.submit "Save", :class => 'btn primary' %>
+  <% unless modal_flag %>
+    or <%= link_to "cancel", :back %>
+    </div>
+  <% end %>
 <% end %>
