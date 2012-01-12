@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  BSA_ID: 1
+  last_name: MyString
+  first_name: MyString
+  middle_name: MyString
+  title: MyString
+  suffix: MyString
+  nickname: MyString
+  dob: 2012-01-12
+  phone: MyString
+  email: MyString
+  address: MyText
+
+two:
+  BSA_ID: 1
+  last_name: MyString
+  first_name: MyString
+  middle_name: MyString
+  title: MyString
+  suffix: MyString
+  nickname: MyString
+  dob: 2012-01-12
+  phone: MyString
+  email: MyString
+  address: MyText

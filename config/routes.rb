@@ -1,5 +1,7 @@
 RoundtableReport::Application.routes.draw do
 
+  resources :people
+
   # Persistent routes
   resources :programs
   resources :divisions
