@@ -1,0 +1,27 @@
+<h1>Listing oa_memberships</h1>
+
+<table>
+  <tr>
+    <th>Person</th>
+    <th>Lodge</th>
+    <th>Chapter</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @oa_memberships.each do |oa_membership| %>
+  <tr>
+    <td><%= oa_membership.person_id %></td>
+    <td><%= oa_membership.lodge_id %></td>
+    <td><%= oa_membership.chapter_id %></td>
+    <td><%= link_to 'Show', oa_membership %></td>
+    <td><%= link_to 'Edit', edit_oa_membership_path(oa_membership) %></td>
+    <td><%= link_to 'Destroy', oa_membership, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Oa membership', new_oa_membership_path %>

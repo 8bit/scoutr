@@ -1,5 +1,7 @@
 RoundtableReport::Application.routes.draw do
 
+  resources :oa_memberships
+
   resources :people
 
   # Persistent routes

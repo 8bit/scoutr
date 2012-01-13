@@ -1,0 +1,29 @@
+<%= form_for(@oa_membership) do |f| %>
+  <% if @oa_membership.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@oa_membership.errors.count, "error") %> prohibited this oa_membership from being saved:</h2>
+
+      <ul>
+      <% @oa_membership.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :person_id %><br />
+    <%= f.number_field :person_id %>
+  </div>
+  <div class="field">
+    <%= f.label :lodge_id %><br />
+    <%= f.number_field :lodge_id %>
+  </div>
+  <div class="field">
+    <%= f.label :chapter_id %><br />
+    <%= f.number_field :chapter_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

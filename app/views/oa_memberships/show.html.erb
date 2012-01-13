@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Person:</b>
+  <%= @oa_membership.person_id %>
+</p>
+
+<p>
+  <b>Lodge:</b>
+  <%= @oa_membership.lodge_id %>
+</p>
+
+<p>
+  <b>Chapter:</b>
+  <%= @oa_membership.chapter_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_oa_membership_path(@oa_membership) %> |
+<%= link_to 'Back', oa_memberships_path %>
