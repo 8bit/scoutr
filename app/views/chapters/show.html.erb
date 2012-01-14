@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
+<ul class="breadcrumb">
+  <li><%= link_to @chapter.lodge.name, @chapter.lodge %> <span class="divider">/</span></li>
+  <li class="active"><%= @chapter.name %></li>
+</ul>
 
 <p>
   <b>Name:</b>
@@ -15,6 +19,16 @@
   <%= @chapter.district_id %>
 </p>
 
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+<% @oa_memberships.each do |oa_membership| %>
+  <tr>
+    <td><%= oa_membership.name %></td>
+  <tr>
+<% end %>
+</table>
 
 <%= link_to 'Edit', edit_chapter_path(@chapter) %> |
 <%= link_to 'Back', chapters_path %>

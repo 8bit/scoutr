@@ -1,2 +1,2 @@
-module OA_MembershipsHelper
+module OaMembershipsHelper
 end
