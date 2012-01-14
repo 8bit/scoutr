@@ -41,7 +41,7 @@
   </div>
   <div class="field">
     <%= f.label :dob %><br />
-    <%= f.date_select :dob %>
+    <%= f.date_select :dob, :start_year => 1930, :end_year => Date.today.year, :include_blank => true, :default => nil %>
   </div>
   <div class="field">
     <%= f.label :phone %><br />
