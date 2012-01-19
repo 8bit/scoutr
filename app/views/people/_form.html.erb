@@ -11,16 +11,17 @@
     <% end %>
 
     <%= f.text_field :BSA_ID %>
-    <%= f.text_field :last_name %>
     <%= f.text_field :first_name %>
+    <%= f.text_field :nickname %>
     <%= f.text_field :middle_name %>
+    <%= f.text_field :last_name %>
     <%= f.text_field :title %>
     <%= f.text_field :suffix %>
-    <%= f.text_field :nickname %>
     <%= f.date_select :dob, :start_year => 100.years.ago.year, :end_year => 5.years.ago.year, :default => nil, :order => [:month, :day, :year], :prompt => [:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'] %>
     <%= f.text_field :phone %>
     <%= f.text_field :email %>
-    <%= f.text_area :address %>
+    <%= f.text_area :address, :rows => 3  %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save Data', :class => 'btn' %> or <%= link_to 'Cancel', :back, :class => 'btn'  %>
+
 <% end %>
