@@ -1,4 +1,4 @@
-<%= form_for(@person) do |f| %>
+<%= form_for(@person, :builder => BootstrapFormBuilder) do |f| %>
   <% if @person.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
@@ -8,54 +8,19 @@
         <li><%= msg %></li>
       <% end %>
       </ul>
-    </div>
-  <% end %>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :BSA_ID %><br />
-    <%= f.number_field :BSA_ID %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
+    <%= f.text_field :BSA_ID %>
     <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_name %><br />
     <%= f.text_field :middle_name %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :suffix %><br />
     <%= f.text_field :suffix %>
-  </div>
-  <div class="field">
-    <%= f.label :nickname %><br />
     <%= f.text_field :nickname %>
-  </div>
-  <div class="field">
-    <%= f.label :dob %><br />
-    <%= f.date_select :dob, :start_year => 1930, :end_year => Date.today.year, :include_blank => true, :default => nil %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.date_select :dob, :start_year => 100.years.ago.year, :end_year => 5.years.ago.year, :default => nil, :order => [:month, :day, :year], :prompt => [:day => 'Choose day', :month => 'Choose month', :year => 'Choose year'] %>
     <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
     <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
     <%= f.text_area :address %>
-  </div>
   <div class="actions">
     <%= f.submit %>
-  </div>
 <% end %>
