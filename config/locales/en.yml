@@ -4,7 +4,14 @@
 en:
     hello: "Hello world"
     activerecord:
+        models:
+            person: "Scout"
+            unit: "Unit"
         attributes:
             person:
                 BSA_ID: "BSA ID"
-                dob: "DAte of Births"
+                dob: "Date of Birth"
+            unit:
+                organization_id: "Chartering Organization"
+                number: "Unit Number"
+                meeting_address: "Meeting Address"

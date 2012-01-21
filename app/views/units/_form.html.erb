@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <%= f.text_field :number %>
   <div class="clearfix">
     <%= f.label :program_id %><div class="input"><%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name", @unit.program_id) %></div>
