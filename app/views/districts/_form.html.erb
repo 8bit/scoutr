@@ -15,10 +15,7 @@
     <%= f.label :name %><div class="input"><%= f.text_field :name %></div>
   </div>
   <div class="clearfix">
-    <%= f.label :council_id %><div class="input"><%= @district.council.name %></div>
-  </div>
-  <div class="clearfix">
-    <%= f.label :division_id %><div class="input"><%= f.select :division_id, options_from_collection_for_select(Division.where(:council_id => @district.council), "id", "name", @district.division_id) %></div>
+    <%= f.label :division_id %><div class="input"><%= f.grouped_collection_select :division_id, Council.all, :divisions, :name, :id, :name %></div>
   </div>
   <div class="actions">
     <%= f.submit 'Save District', :class => 'btn' %> or <%= link_to 'cancel', :back %>

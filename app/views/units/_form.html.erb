@@ -18,7 +18,10 @@
     <%= f.label :organization_id %><div class="input"><%= f.select :organization_id, options_from_collection_for_select(Organization.all, "id", "name", @unit.organization_id) %></div>
   </div>
   <div class="clearfix">
-    <%= f.label :district_id %><div class="input"><%= f.select :district_id, options_from_collection_for_select(District.all, "id", "name", @unit.district_id) %></div>
+    <%= f.label :council_id %><div class="input"><%= select_tag :council_id, options_from_collection_for_select(Council.all, "id", "name") %></div>
+  </div>
+  <div class="clearfix">
+    <%= f.label :district_id %><div class="input"><%= f.grouped_collection_select :district_id, Council.order(:name), :districts, :name, :id, :name, include_blank: true %></div>
   </div>
   <div class="clearfix">
     <%= f.label :meeting_address %><div class="input"><%= f.text_area :meeting_address, :rows => 3 %></div>
