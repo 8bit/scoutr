@@ -11,51 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120113045512) do
+ActiveRecord::Schema.define(:version => 20120130214631) do
 
   create_table "chapters", :force => true do |t|
     t.string   "name"
     t.integer  "lodge_id"
     t.integer  "district_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "councils", :force => true do |t|
     t.string   "name"
     t.integer  "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "districts", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "division_id"
   end
 
   create_table "divisions", :force => true do |t|
     t.string   "name"
     t.integer  "council_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "lodges", :force => true do |t|
     t.string   "name"
     t.integer  "number"
     t.integer  "council_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "oa_memberships", :force => true do |t|
     t.integer  "person_id"
     t.integer  "lodge_id"
     t.integer  "chapter_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "organizations", :force => true do |t|
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(:version => 20120113045512) do
     t.text     "address"
     t.string   "phone"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "people", :force => true do |t|
@@ -79,14 +79,14 @@ ActiveRecord::Schema.define(:version => 20120113045512) do
     t.string   "phone"
     t.string   "email"
     t.text     "address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "programs", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "unit_type"
   end
 
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(:version => 20120113045512) do
     t.integer  "num_individuals"
     t.string   "email"
     t.integer  "district_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "program_id"
   end
 
@@ -107,8 +107,15 @@ ActiveRecord::Schema.define(:version => 20120113045512) do
     t.integer  "organization_id"
     t.integer  "district_id"
     t.text     "meeting_address"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end

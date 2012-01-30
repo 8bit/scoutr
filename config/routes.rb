@@ -1,5 +1,12 @@
 RoundtableReport::Application.routes.draw do
 
+  resource :sessions
+  
+  match 'login' => 'sessions#new'
+  match 'logout' => 'sessions#destroy'
+  
+  resources :users
+
   resources :oa_memberships
 
   resources :people
