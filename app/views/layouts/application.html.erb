@@ -17,10 +17,10 @@
 	            <li class="dropdown">
 	              <a href="#" class="dropdown-toggle">Focus: <%= subdomain_name %></a>
 	              <ul class="dropdown-menu">
-									<li><a href="<%= request.protocol %>commissioner.<%= request.domain + request.port_string %>">Commissioner</a></li>
-									<li><a href="<%= request.protocol %>oa.<%= request.domain + request.port_string %>">OA</a></li>
+					  <li><a href="<%= request.protocol %>commissioner.<%= request.domain + request.port_string %>">Commissioner</a></li>
+					  <li><a href="<%= request.protocol %>oa.<%= request.domain + request.port_string %>">OA</a></li>
 	                <li class="divider"></li>
-									<li><a href="<%= request.protocol %><%= request.domain + request.port_string %>">None</a></li>
+					    <li><a href="<%= request.protocol %><%= request.domain + request.port_string %>">None</a></li>
 	              </ul>
 	            </li>
 	            <% if request.subdomain == 'oa' %>
@@ -46,6 +46,13 @@
 	            
 	            <% end %>
 	          </ul>
+	        <% unless current_user %>
+            <form action="/sessions" class="pull-right" method="post">
+                <input class="input-small" type="text" placeholder="Username" name="email">
+                <input class="input-small" type="password" placeholder="Password" name="password">
+                <button class="btn primary" type="submit">Sign in</button>
+            </form>
+            <% else %>
 	          <ul class="nav secondary-nav">
 	            <li class="dropdown">
 	              <a href="#" class="dropdown-toggle">Christopher Jones</a>
@@ -53,10 +60,11 @@
 	                <li><a href="#">Profile</a></li>
 	                <li><a href="#">Recent Activity</a></li>
 	                <li class="divider"></li>
-	                <li><a href="#">Logout</a></li>
+	                <li><a href="/logout">Logout</a></li>
 	              </ul>
 	            </li>
 	          </ul>
+	         <% end %>
 	        </div>
 	      </div><!-- /topbar-inner -->
 	    </div>
