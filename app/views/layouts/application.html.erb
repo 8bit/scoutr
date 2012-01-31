@@ -54,8 +54,9 @@
             </form>
             <% else %>
 	          <ul class="nav secondary-nav">
+				<li></li>	
 	            <li class="dropdown">
-	              <a href="#" class="dropdown-toggle">Christopher Jones</a>
+	              <a href="#" class="dropdown-toggle"><%= gravatar_for current_user, :size => 25 %> Christopher Jones</a>
 	              <ul class="dropdown-menu">
 	                <li><a href="#">Profile</a></li>
 	                <li><a href="#">Recent Activity</a></li>

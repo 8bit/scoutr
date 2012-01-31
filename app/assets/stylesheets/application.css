@@ -13,3 +13,12 @@ body {
 .content-wrapper {
 	padding-top: 50px;
 }
+
+.avatar {	
+    position: relative; float: left;
+    margin-right: 5px;
+    -webkit-border-radius: 3px;
+    border: 1px solid #444;
+    margin-top: -4px;
+
+}
