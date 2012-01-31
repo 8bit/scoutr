@@ -14,6 +14,8 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     @person = Person.find(params[:id])
+    @memberships = @person.memberships
+    
     authorize! :read, @person
     
     respond_to do |format|
@@ -44,6 +46,7 @@ class PeopleController < ApplicationController
   # POST /people.json
   def create
     @person = Person.new(params[:person])
+    @person.admin = true if Person.all.count == 0
     authorize! :create, @person
 
     respond_to do |format|

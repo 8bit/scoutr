@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :available_councils
   
+  def age(birthday)
+    (Time.now.to_s(:number).to_i - birthday.to_time.to_s(:number).to_i)/10e9.to_i
+  end
+  helper_method :age
+  
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access denied!"
     redirect_to :back

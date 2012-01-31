@@ -1,59 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Bsa id:</b>
-  <%= @person.BSA_ID %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @person.last_name %>
-</p>
-
-<p>
-  <b>First name:</b>
-  <%= @person.first_name %>
-</p>
-
-<p>
-  <b>Middle name:</b>
-  <%= @person.middle_name %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @person.title %>
-</p>
-
-<p>
-  <b>Suffix:</b>
-  <%= @person.suffix %>
-</p>
-
-<p>
-  <b>Nickname:</b>
-  <%= @person.nickname %>
-</p>
-
-<p>
-  <b>Dob:</b>
-  <%= @person.dob %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @person.phone %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @person.email %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @person.address %>
-</p>
+<div class="hero-unit">
+  <span style="float: left;"><%= gravatar_for @person %></span>
+  <div style="float: right; padding-left: 10px;">
+      <%= simple_format(@person.address) %>
+  </div>
+  <div style="float: right;">
+    <p><b>Phone:</b><%= @person.phone %><br />
+    <b>Email:</b><%= @person.email %><br /></p>
+  </div>
+  <h2><%= @person.title + ' ' + @person.name + ' ' + @person.suffix + ' ' + @person.nickname %></h2>
+  <p><strong>BSA ID:</strong> <%= @person.BSA_ID %> <strong>Age:</strong> <%= age(@person.dob) %></p>
+</div>
+<h2>Memberships</h2>
+<table>
+  <tr>
+    <th>Group</th>
+  <tr>
+  <% @memberships.each do |m| %>
+  <tr>
+    <td><%= m.group.name %></td>
+  </tr>
+  <% end %>
+</table>
 
 
 <%= link_to 'Edit', edit_person_path(@person) %> |
