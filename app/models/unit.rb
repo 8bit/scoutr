@@ -6,6 +6,9 @@ class Unit < ActiveRecord::Base
   has_one :division, :through => :district
   has_one :council, :through => :division
   
+  has_many :memberships, :as => group
+  has_many :members, :through => :memberships
+  
   def name
     self.program.unit_type + " " + self.number.to_s
   end

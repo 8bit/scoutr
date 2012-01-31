@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120130214631) do
+ActiveRecord::Schema.define(:version => 20120131051042) do
 
   create_table "chapters", :force => true do |t|
     t.string   "name"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(:version => 20120130214631) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "memberships", :force => true do |t|
+    t.integer  "member_id"
+    t.string   "group_type"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "oa_memberships", :force => true do |t|
     t.integer  "person_id"
     t.integer  "lodge_id"
@@ -79,8 +87,10 @@ ActiveRecord::Schema.define(:version => 20120130214631) do
     t.string   "phone"
     t.string   "email"
     t.text     "address"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "password_digest"
+    t.boolean  "admin"
   end
 
   create_table "programs", :force => true do |t|
@@ -107,13 +117,6 @@ ActiveRecord::Schema.define(:version => 20120130214631) do
     t.integer  "organization_id"
     t.integer  "district_id"
     t.text     "meeting_address"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "email"
-    t.string   "password_digest"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

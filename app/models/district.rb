@@ -4,6 +4,10 @@ class District < ActiveRecord::Base
   
   has_many :roundtables
   has_one :chapter
+  
+  has_many :memberships, :as => group
+  has_many :members, :through => :memberships
+
   validates_presence_of :name
   
   def parent

@@ -28,17 +28,21 @@
 	            <li><a href="/chapters">Chapters</a></li>
 	            
 	            <% else %>
+	            
+                <% if current_user && available_councils.count == 1 %>
+                    <li><%= link_to available_councils.first.name, available_councils.first %></li>
+    	        <% elsif current_user && available_councils.count > 1 %>
 	            <li class="dropdown">
 	              <a href="#" class="dropdown-toggle">Councils</a>
 	              <ul class="dropdown-menu">
-	                <% Council.all.each do |c|%>
+	                <% available_councils.each do |c| %>
 										<li><%= link_to truncate(c.name, :length => 20), c %></li>
 									<% end %>
 	                <li class="divider"></li>
 	                <li><a href="/councils">List All</a></li>
 	              </ul>
 	            </li>
-	            
+	            <% end %>
 	            <li><a href="/divisions">Divisions</a></li>
 	            <li><a href="/districts">Districts</a></li>
 	            <li><a href="/units">Units</a></li>
