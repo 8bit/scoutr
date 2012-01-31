@@ -14,7 +14,8 @@ class PeopleController < ApplicationController
   # GET /people/1.json
   def show
     @person = Person.find(params[:id])
-
+    authorize! :read, @person
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @person }
@@ -25,7 +26,8 @@ class PeopleController < ApplicationController
   # GET /people/new.json
   def new
     @person = Person.new
-
+    authorize! :create, @person
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @person }
@@ -35,12 +37,14 @@ class PeopleController < ApplicationController
   # GET /people/1/edit
   def edit
     @person = Person.find(params[:id])
+    authorize! :update, @person
   end
 
   # POST /people
   # POST /people.json
   def create
     @person = Person.new(params[:person])
+    authorize! :create, @person
 
     respond_to do |format|
       if @person.save
@@ -57,6 +61,7 @@ class PeopleController < ApplicationController
   # PUT /people/1.json
   def update
     @person = Person.find(params[:id])
+    authorize! :update, @person
 
     respond_to do |format|
       if @person.update_attributes(params[:person])
@@ -73,6 +78,8 @@ class PeopleController < ApplicationController
   # DELETE /people/1.json
   def destroy
     @person = Person.find(params[:id])
+    authorize! :destory, @person
+
     @person.destroy
 
     respond_to do |format|

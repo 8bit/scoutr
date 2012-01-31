@@ -21,6 +21,15 @@
     <%= f.text_field :phone %>
     <%= f.text_field :email %>
     <%= f.text_area :address, :rows => 3  %>
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %>
+    </div>
+    
   <div class="actions">
     <%= f.submit 'Save Data', :class => 'btn' %> or <%= link_to 'Cancel', :back, :class => 'btn'  %>
 
