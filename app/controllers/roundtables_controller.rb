@@ -1,6 +1,8 @@
 class RoundtablesController < ApplicationController
   # GET /roundtables
   # GET /roundtables.json
+  before_filter :require_user
+  
   def index
     @district = District.find(params[:district_id])
     @roundtables = Roundtable.where(:district_id => @district)
@@ -42,6 +44,7 @@ class RoundtablesController < ApplicationController
   # POST /roundtables
   # POST /roundtables.json
   def create
+    params[:roundtable][:happened_on] ||= Date.today
     @roundtable = Roundtable.new(params[:roundtable])
 
     respond_to do |format|

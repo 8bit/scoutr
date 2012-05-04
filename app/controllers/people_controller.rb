@@ -28,7 +28,6 @@ class PeopleController < ApplicationController
   # GET /people/new.json
   def new
     @person = Person.new
-    authorize! :create, @person
     
     respond_to do |format|
       format.html # new.html.erb

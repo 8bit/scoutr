@@ -21,6 +21,11 @@
     <%= f.text_field :phone %>
     <%= f.text_field :email %>
     <%= f.text_area :address, :rows => 3  %>
+    <%= f.label :lodge_id %><div class="input"><%= f.select :lodge_id, options_from_collection_for_select(Lodge.all, "id", "name", @chapter.lodge_id) %></div>
+    <% if @chapter.lodge && @chapter.lodge.council %>
+      <%= f.select :district_id, options_from_collection_for_select(@chapter.lodge.council.districts.all, "id", "name", @chapter.district_id) %>
+    <% end %>
+    
     <div class="field">
       <%= f.label :password %><br />
       <%= f.password_field :password %>

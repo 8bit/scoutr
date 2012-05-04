@@ -4,14 +4,16 @@ class Ability
   def initialize(user)
     user ||= Person.new # guest user (not logged in)
     can :read, :all
-    
+    can :manage, District do |district|
+      user.districts.include?(district)
+    end
     can :manage, Person do |person|
       person == user
     end
     
     cannot :destory, Person
     
-    can :manage, :all if user.admin?
+    # can :manage, :all if user.admin?
     
     can :create, Person if Person.all.count == 0
     #

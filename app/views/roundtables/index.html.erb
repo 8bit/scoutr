@@ -21,6 +21,14 @@
   <%= f.hidden_field :district_id, :value =>  @roundtable.district_id %>
 
 <table border="1" cellpadding="5" cellspacing="0">
+	<tr>
+		<td><%= f.text_field :happened_on, :class => "span3" %></td>
+	  <td><%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name", @roundtable.program_id), :class => "span2" %></td>
+	  <td><%= f.number_field :num_units, :class => "span2" %></td>
+	  <td><%= f.number_field :num_individuals, :class => "span2" %></td>
+		<td><%= f.text_field :email %></td>
+	  <td colspan="2"><%= f.submit 'Create Roundtable', :class => 'btn' %></td>
+	</tr>
   <tr>
     <th>Date</th>
     <th>Program</th>
@@ -64,15 +72,6 @@
   <% end %>
 
 <% end %>
-
-<tr>
-	<td><%= f.text_field :happened_on, :class => "span3" %></td>
-  <td><%= f.select :program_id, options_from_collection_for_select(Program.all, "id", "name", @roundtable.program_id), :class => "span2" %></td>
-  <td><%= f.number_field :num_units, :class => "span2" %></td>
-  <td><%= f.number_field :num_individuals, :class => "span2" %></td>
-	<td><%= f.text_field :email %></td>
-  <td colspan="2"><%= f.submit 'Create Roundtable', :class => 'btn' %></td>
-</tr>
 
 </table>
 

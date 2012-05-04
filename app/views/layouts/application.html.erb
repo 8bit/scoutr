@@ -12,6 +12,7 @@
 	      <div class="topbar-inner">
 	        <div class="container">
 	          <h3><a href="#">Scoutr</a></h3>
+			      <% if current_user && current_user.admin? %>
 	          <ul class="nav">
 	            
 	            <li class="dropdown">
@@ -50,6 +51,7 @@
 	            
 	            <% end %>
 	          </ul>
+	          <% end %>
 	        <% unless current_user %>
             <form action="/sessions" class="pull-right" method="post">
                 <input class="input-small" type="text" placeholder="Username" name="email">

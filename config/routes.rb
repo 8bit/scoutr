@@ -4,6 +4,7 @@ RoundtableReport::Application.routes.draw do
   
   match 'login' => 'sessions#new'
   match 'logout' => 'sessions#destroy'
+  match 'register' => 'people#new'
   
   resources :users
 
@@ -33,7 +34,7 @@ RoundtableReport::Application.routes.draw do
 
   # Routes for Commissioner
   constraints :subdomain => "commissioner" do
-    root :to => 'roundtables#new'
+    root :to => 'districts#index'
     
     resources :roundtables
     resources :districts do

@@ -1,8 +1,12 @@
 class DistrictsController < ApplicationController
   # GET /districts
   # GET /districts.json
+  before_filter :require_user
+  
   def index
     @districts = District.all
+    
+    @districts = @districts.select { |district| can? :manage, district }
     
     respond_to do |format|
       format.html # index.html.erb

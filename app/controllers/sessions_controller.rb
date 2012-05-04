@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = Person.find_by_email(params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to root_url, :flash => { :success => "Logged in." }
+      redirect_to default_district, :flash => { :success => "Logged in." }
     else
       flash.now.alert = "Invalid email or password"
       render "new"

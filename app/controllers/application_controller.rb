@@ -14,6 +14,19 @@ class ApplicationController < ActionController::Base
   end
   helper_method :available_councils
   
+  def default_district
+    # FIXME: Refine district selection
+    if current_user.districts.present?
+      current_user.districts.first
+    else
+      current_user
+    end
+  end
+  
+  def require_user
+    redirect_to login_path unless current_user
+  end
+  
   def age(birthday)
     (Time.now.to_s(:number).to_i - birthday.to_time.to_s(:number).to_i)/10e9.to_i
   end

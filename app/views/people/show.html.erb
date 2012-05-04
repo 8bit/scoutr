@@ -8,7 +8,7 @@
     <b>Email:</b><%= @person.email %><br /></p>
   </div>
   <h2><%= @person.title + ' ' + @person.name + ' ' + @person.suffix + ' ' + @person.nickname %></h2>
-  <p><strong>BSA ID:</strong> <%= @person.BSA_ID %> <strong>Age:</strong> <%= age(@person.dob) %></p>
+  <p><strong>BSA ID:</strong> <%= @person.BSA_ID %> <strong>Age:</strong> <%= age(@person.dob) if @person.dob %></p>
 </div>
 <h2>Memberships</h2>
 <table>
